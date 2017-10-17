@@ -4,7 +4,7 @@ from character import Enemy
 from container import Container
 
 heldItems = []
-myHealth = 53
+myHealth = 95
 visitedRooms = []
 
 # ********************************* SET UP THE ROOMS *********************************
@@ -12,8 +12,6 @@ visitedRooms = []
 # Kitchen
 #
 # Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
-kitchen = Room("Kitchen","A dark and dirty room with flies buzzing around. There are dirty beakers, graduated cylinders, and pipettes in the sink. There is a CUPBOARD above the sink and a CABINET under the sink.")
-
 Gym = Room("Gym","A big, empty, dark room with a bunch of boxes everywhere. On the floor there is a KNIFE and a FIRST AID")
 
 # The kitchen has a CUPBOARD object that contains/hides 3 interactive items, a sponge, a plate, a can of soup
@@ -43,10 +41,11 @@ aud.chest = Container("In the chest you see a ROBIN HOOD COSTUME, a BOW, and som
 aud.create_room_item("Cars Flashlight")
 carsFlashlight = Flashlight("Cars",1,True)
 
-# Supply Closet
+# Janitor Closet
 #
-supplycloset = Room("Supply Closet","A small dark room with a musty smell. On one side is a filing CABINET and a large plastic BIN. On the other side is a SHELF with supplies and a SHOEBOX.")
-
+janitorcloset = Room("Janitor Closet","A small dark room with a musty smell. On one side is a filing CABINET and a large plastic BIN. On the other side is a SHELF with supplies and a SHOEBOX.")
+janitorcloset.cabinet = Container("cabinet",["holy water","bible"])
+janitorcloset.shelf = Container("shelf",["shank"])
 # Create a fake room called locked that represents all permenently locked doors
 #
 locked = Room("locked","")
@@ -55,24 +54,14 @@ locked = Room("locked","")
 Gym.link_room(locked, "EAST")
 Gym.link_room(smalloffice, "SOUTH")
 Gym.link_room(locked, "WEST")
-supplycloset.link_room(smalloffice, "EAST")
-<<<<<<< HEAD
+janitorcloset.link_room(smalloffice, "EAST")
 smalloffice.link_room(Gym, "NORTH")
-smalloffice.link_room(lab, "EAST")
-smalloffice.link_room(locked, "SOUTH")
-smalloffice.link_room(supplycloset, "WEST")
-lab.link_room(locked, "SOUTH")
-lab.link_room(smalloffice, "WEST")
-current_room = Gym
-=======
-smalloffice.link_room(kitchen, "NORTH")
 smalloffice.link_room(aud, "EAST")
 smalloffice.link_room(locked, "SOUTH")
-smalloffice.link_room(supplycloset, "WEST")
+smalloffice.link_room(janitorcloset, "WEST")
 aud.link_room(locked, "SOUTH")
 aud.link_room(smalloffice, "WEST")
-current_room = kitchen
->>>>>>> bad184cfbe2317a6ca648cc35ef05a5d67c9429a
+current_room = Gym
 
 # Set up characters
 ojsimpson = Enemy("OJ Simpson", "A big man, who committed multiple murders. He is a prisoner in the school and his way out is killing you.")
@@ -139,7 +128,7 @@ def checkUserInput(current_room,command,heldItems):
     
     # ********************************* ROOM SPECIFIC USER INPUTS *********************************
     # Interactive containers look like this...   elif current_room.name == "Laboratory" and command == "SHELF"
-     elif current_room.name == "Gym" and command == "BOX":
+    elif current_room.name == "Gym" and command == "BOX":
         # Open kitchen.cupboard and concat each of the contents to the end of room_items
         current_room.room_items += Gym.box.open()
     # Can only open cabinet if holding a flashlight that isOn
@@ -148,7 +137,7 @@ def checkUserInput(current_room,command,heldItems):
         print("You use knife to open up box.")
         current_room.room_items += Gym.box2.open()
     elif current_room.name == "Gym" and command == "SHINY BOX":
-        print("You check the box but its too dark to see.")
+        print("You check the cabinet, but it's too dark to see if there is anything inside.")
     elif current_room.name == "Small Office" and command == "PACKAGE":
         # Open smalloffice.desk and concat each of the contents to the end of room_items
         current_room.room_items += smalloffice.package.open()
@@ -160,6 +149,12 @@ def checkUserInput(current_room,command,heldItems):
         current_room.room_items += smalloffice.desk.open()
     elif current_room.name == "Small Office" and command == "DESK":
         print("The desk drawer is locked.")
+    elif current_room.name == "Janitor Closet" and command == "SHELF":
+        # Open lab.shelf and concat each of the contents to the end of room_items
+        current_room.room_items += aud.chest.open()
+    elif current_room.name == "Janitor Closet" and command == "CABINET":
+        # Open lab.shelf and concat each of the contents to the end of room_items
+        current_room.room_items += aud.chest.open()
     elif current_room.name == "Auditorium" and command == "CHEST":
         # Open lab.shelf and concat each of the contents to the end of room_items
         current_room.room_items += aud.chest.open()
