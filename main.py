@@ -14,7 +14,7 @@ visitedRooms = []
 # Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
 kitchen = Room("Kitchen","A dark and dirty room with flies buzzing around. There are dirty beakers, graduated cylinders, and pipettes in the sink. There is a CUPBOARD above the sink and a CABINET under the sink.")
 
-ym = Room("Gym","A big, empty, dark room with a bunch of boxes everywhere. On the floor there is a KNIFE and a FIRST AID")
+Gym = Room("Gym","A big, empty, dark room with a bunch of boxes everywhere. On the floor there is a KNIFE and a FIRST AID")
 
 # The kitchen has a CUPBOARD object that contains/hides 3 interactive items, a sponge, a plate, a can of soup
 # Once this container is open, the interactive items will no longer be hidden in the container
