@@ -105,3 +105,4 @@ venv.bak/
 __pycache__/character.cpython-35.pyc
 __pycache__/character.cpython-35.pyc
 *.pyc
+*.pyc
