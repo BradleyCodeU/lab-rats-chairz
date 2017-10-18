@@ -25,12 +25,12 @@ kitchen.cabinet = Container("cabinet under the sink",["knife","twinkie"])
 kitchen.create_room_item("spoon")
 kitchen.create_room_item("rat")
 
-# Small Office
+# Classroom
 #
-smalloffice = Room("Small Office","A dark room with a mess of books and papers covering the desk. There is some mail and an ozon.ru PACKAGE. You can READ a book. You can look in the DESK.")
-smalloffice.desk = Container("desk",["battery","envelope"])
-smalloffice.package = Container("ozon.ru package",["sheet of bubble wrap","porcelain figurine of a bear","red flashlight"])
-smalloffice.create_room_item("guinea pig")
+classroom = Room("Classroom","A dark room with rows of desks and posters on the walls. There are items on some of the desks and a BOX in the corner of the room. You can READ a poster. You can Take at the items on the DESKS. There is a red flashlight near the door.")
+classroom.desk = Container("desks",["scissors","notebook paper"])
+classroom.box = Container("box",["sheet of bubble wrap","notebooks","markers"])
+classroom.create_room_item("Scissors")
 redFlashlight = Flashlight("red",0,False)
 
 # Laboratory
@@ -51,15 +51,15 @@ locked = Room("locked","")
 
 # Connect rooms. These are one-way connections.
 kitchen.link_room(locked, "EAST")
-kitchen.link_room(smalloffice, "SOUTH")
+kitchen.link_room(classroom, "SOUTH")
 kitchen.link_room(locked, "WEST")
-supplycloset.link_room(smalloffice, "EAST")
-smalloffice.link_room(kitchen, "NORTH")
-smalloffice.link_room(aud, "EAST")
-smalloffice.link_room(locked, "SOUTH")
-smalloffice.link_room(supplycloset, "WEST")
+supplycloset.link_room(classroom, "EAST")
+classroom.link_room(kitchen, "NORTH")
+classroom.link_room(aud, "EAST")
+classroom.link_room(locked, "SOUTH")
+classroom.link_room(supplycloset, "WEST")
 aud.link_room(locked, "SOUTH")
-aud.link_room(smalloffice, "WEST")
+aud.link_room(classroom, "WEST")
 current_room = kitchen
 
 # Set up characters
@@ -137,17 +137,14 @@ def checkUserInput(current_room,command,heldItems):
         current_room.room_items += kitchen.cabinet.open()
     elif current_room.name == "Kitchen" and command == "CABINET":
         print("You check the cabinet, but it's too dark to see if there is anything inside.")
-    elif current_room.name == "Small Office" and command == "PACKAGE":
-        # Open smalloffice.desk and concat each of the contents to the end of room_items
-        current_room.room_items += smalloffice.package.open()
-    elif current_room.name == "Small Office" and command == "READ":
-        print("POCCNR??? You can't read it. It's written is some strange Cyrillic script.")
-    elif current_room.name == "Small Office" and command == "DESK" and "brass key" in heldItems:
-        # Open smalloffice.desk and concat each of the contents to the end of room_items
-        print("You use the brass key to unlock the desk.")
-        current_room.room_items += smalloffice.desk.open()
-    elif current_room.name == "Small Office" and command == "DESK":
-        print("The desk drawer is locked.")
+    elif current_room.name == "Classroom" and command == "Box":
+        # Open classroom.desk and concat each of the contents to the end of room_items
+        current_room.room_items += classroom.package.open()
+    elif current_room.name == "Classroom" and command == "READ":
+        print("It is about a field trip from 10 years ago.")
+    elif current_room.name == "Classroom" and command == "DESKS" and "Scissors" in heldItems:
+        # Open classroom.desk and concat each of the contents to the end of room_items
+        current_room.room_items += classroom.desk.open()
     elif current_room.name == "Auditorium" and command == "CHEST":
         # Open lab.shelf and concat each of the contents to the end of room_items
         current_room.room_items += aud.chest.open()
