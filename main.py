@@ -142,7 +142,7 @@ def checkUserInput(current_room,command,heldItems):
         current_room.room_items += Gym.box2.open()
     elif current_room.name == "Gym" and command == "SHINY BOX":
         print("You check the cabinet, but it's too dark to see if there is anything inside.")
-<<<<<<< HEAD
+
     elif current_room.name == "Classroom" and command == "Box":
         # Open classroom.desk and concat each of the contents to the end of room_items
         current_room.room_items += classroom.package.open()
@@ -151,27 +151,13 @@ def checkUserInput(current_room,command,heldItems):
     elif current_room.name == "Classroom" and command == "DESKS" and "Scissors" in heldItems:
         # Open classroom.desk and concat each of the contents to the end of room_items
         current_room.room_items += classroom.desk.open()
-=======
-    elif current_room.name == "Small Office" and command == "PACKAGE":
-        # Open smalloffice.desk and concat each of the contents to the end of room_items
-        current_room.room_items += smalloffice.package.open()
-    elif current_room.name == "Small Office" and command == "READ":
-        print("POCCNR??? You can't read it. It's written is some strange Cyrillic script.")
-    elif current_room.name == "Small Office" and command == "DESK" and "brass key" in heldItems:
-        # Open smalloffice.desk and concat each of the contents to the end of room_items
-        print("You use the brass key to unlock the desk.")
-        current_room.room_items += smalloffice.desk.open()
-    elif current_room.name == "Small Office" and command == "DESK":
-        print("The desk drawer is locked.")
+
     elif current_room.name == "Janitor Closet" and command == "SHELF":
         # Open lab.shelf and concat each of the contents to the end of room_items
         current_room.room_items += janitorcloset.shelf.open()
     elif current_room.name == "Janitor Closet" and command == "CABINET":
         # Open lab.shelf and concat each of the contents to the end of room_items
-<<<<<<< HEAD
-        current_room.room_items += aud.chest.open()
->>>>>>> cca23ae0903a9f81da87007d9874fd234c4662a2
-=======
+
         current_room.room_items += janitorcloset.cabinet.open()
 >>>>>>> 1774cf6415c6004e32c6523b0fb3a2d52348a39e
     elif current_room.name == "Auditorium" and command == "CHEST":
