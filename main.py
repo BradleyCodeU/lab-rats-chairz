@@ -151,10 +151,10 @@ def checkUserInput(current_room,command,heldItems):
         print("The desk drawer is locked.")
     elif current_room.name == "Janitor Closet" and command == "SHELF":
         # Open lab.shelf and concat each of the contents to the end of room_items
-        current_room.room_items += aud.chest.open()
+        current_room.room_items += janitorcloset.shelf.open()
     elif current_room.name == "Janitor Closet" and command == "CABINET":
         # Open lab.shelf and concat each of the contents to the end of room_items
-        current_room.room_items += aud.chest.open()
+        current_room.room_items += janitorcloset.cabinet.open()
     elif current_room.name == "Auditorium" and command == "CHEST":
         # Open lab.shelf and concat each of the contents to the end of room_items
         current_room.room_items += aud.chest.open()
