@@ -53,13 +53,13 @@ locked = Room("locked","")
 # Connect rooms. These are one-way connections.
 
 Gym.link_room(locked, "EAST")
-Gym.link_room(smalloffice, "SOUTH")
+Gym.link_room(classroom, "SOUTH")
 Gym.link_room(locked, "WEST")
-janitorcloset.link_room(smalloffice, "EAST")
+janitorcloset.link_room(classroom, "EAST")
 classroom.link_room(kitchen, "NORTH")
 classroom.link_room(aud, "EAST")
 classroom.link_room(locked, "SOUTH")
-classroom.link_room(supplycloset, "WEST")
+classroom.link_room(janitorcloset, "WEST")
 aud.link_room(locked, "SOUTH")
 aud.link_room(classroom, "WEST")
 current_room = Gym
@@ -159,7 +159,7 @@ def checkUserInput(current_room,command,heldItems):
         # Open lab.shelf and concat each of the contents to the end of room_items
 
         current_room.room_items += janitorcloset.cabinet.open()
->>>>>>> 1774cf6415c6004e32c6523b0fb3a2d52348a39e
+
     elif current_room.name == "Auditorium" and command == "CHEST":
         # Open lab.shelf and concat each of the contents to the end of room_items
         current_room.room_items += aud.chest.open()
