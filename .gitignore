@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+__pycache__/character.cpython-35.pyc
+__pycache__/character.cpython-35.pyc
+*.pyc
