@@ -51,31 +51,21 @@ janitorcloset.shelf = Container("shelf",["shank"])
 locked = Room("locked","")
 
 # Connect rooms. These are one-way connections.
-<<<<<<< HEAD
-kitchen.link_room(locked, "EAST")
-kitchen.link_room(classroom, "SOUTH")
-kitchen.link_room(locked, "WEST")
-supplycloset.link_room(classroom, "EAST")
+
+Gym.link_room(locked, "EAST")
+Gym.link_room(smalloffice, "SOUTH")
+Gym.link_room(locked, "WEST")
+janitorcloset.link_room(smalloffice, "EAST")
 classroom.link_room(kitchen, "NORTH")
 classroom.link_room(aud, "EAST")
 classroom.link_room(locked, "SOUTH")
 classroom.link_room(supplycloset, "WEST")
 aud.link_room(locked, "SOUTH")
 aud.link_room(classroom, "WEST")
-current_room = kitchen
-=======
-Gym.link_room(locked, "EAST")
-Gym.link_room(smalloffice, "SOUTH")
-Gym.link_room(locked, "WEST")
-janitorcloset.link_room(smalloffice, "EAST")
-smalloffice.link_room(Gym, "NORTH")
-smalloffice.link_room(aud, "EAST")
-smalloffice.link_room(locked, "SOUTH")
-smalloffice.link_room(janitorcloset, "WEST")
-aud.link_room(locked, "SOUTH")
-aud.link_room(smalloffice, "WEST")
 current_room = Gym
->>>>>>> cca23ae0903a9f81da87007d9874fd234c4662a2
+
+
+
 
 # Set up characters
 ojsimpson = Enemy("OJ Simpson", "A big man, who committed multiple murders. He is a prisoner in the school and his way out is killing you.")
