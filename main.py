@@ -53,13 +53,13 @@ locked = Room("locked","")
 # Connect rooms. These are one-way connections.
 
 Gym.link_room(locked, "EAST")
-Gym.link_room(smalloffice, "SOUTH")
+Gym.link_room(classroom, "SOUTH")
 Gym.link_room(locked, "WEST")
-janitorcloset.link_room(smalloffice, "EAST")
-classroom.link_room(kitchen, "NORTH")
+janitorcloset.link_room(classroom, "EAST")
+classroom.link_room(Gym, "NORTH")
 classroom.link_room(aud, "EAST")
 classroom.link_room(locked, "SOUTH")
-classroom.link_room(supplycloset, "WEST")
+classroom.link_room(janitorcloset, "WEST")
 aud.link_room(locked, "SOUTH")
 aud.link_room(classroom, "WEST")
 current_room = Gym
