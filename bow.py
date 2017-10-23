@@ -1,6 +1,6 @@
- class Bow():
+class Bow():
     #Constructor #BELSSED
-    def __init__(self, name,color,ammo,material)
+    def __init__(self, name,color,ammo,material):
         self.name = "Bow"
         self.color = "Brown"
         self.material = "Wood"
