@@ -19,7 +19,7 @@ Gym = Room("Gym","A big, empty, dark room with a bunch of boxes everywhere. On t
 Gym.box = Container("box right next to you",["basketball","shoe","tennis ball"])
 # The kitchen has a CABINET object that contains/hides 2 interactive items, a knife and a twinkie
 # Once this container is open, the interactive items will no longer be hidden in the container
-Gym.box2 = Container("a closed, shiny box near the gym door",["Diary of A Wimpy Kid book","baseball helmet"])
+Gym.box2 = Container("a closed, shiny box near the gym door",["diary of a wimpy kid book","baseball helmet"])
 
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 Gym.create_room_item("knife")
@@ -37,7 +37,7 @@ redFlashlight = Flashlight("red",0,False)
 #
 aud = Room("Auditorium","A huge room that has very little lighting. You can hear the echos of mice running, and the support beams creaking. There is a CHEST behind stage that looks like it would have some clothing in it.")
 # The lab has a SHELF object that contains 3 interactive items. Shelf gets a third argument because you'd say ON the shelf, not IN the shelf
-aud.chest = Container("In the chest you see a ROBIN HOOD COSTUME, a BOW, and some ARROWS.",["Robinhood Costume","Long Bow","quiver with arrows"],"in ")
+aud.chest = Container("In the chest you see a ROBIN HOOD COSTUME, a BOW, and some ARROWS.",["robinhood costume","long bow","quiver with arrows"],"in ")
 aud.create_room_item("Cars Flashlight")
 carsFlashlight = Flashlight("Cars",1,True)
 
@@ -148,17 +148,17 @@ def checkUserInput(current_room,command,heldItems):
     elif current_room.name == "Classroom" and command == "READ":
         print("It is about a field trip from 10 years ago.")
     elif current_room.name == "Classroom" and command == "DESKS" and "Scissors" in heldItems:
+        # Open smalloffice.desk and concat each of the contents to the end of room_items
+        print("You use the brass key to unlock the desk.")
         # Open classroom.desk and concat each of the contents to the end of room_items
         current_room.room_items += classroom.desk.open()
-
+        print("The desk drawer is locked.")
     elif current_room.name == "Janitor Closet" and command == "SHELF":
         # Open lab.shelf and concat each of the contents to the end of room_items
         current_room.room_items += janitorcloset.shelf.open()
     elif current_room.name == "Janitor Closet" and command == "CABINET":
         # Open lab.shelf and concat each of the contents to the end of room_items
-
         current_room.room_items += janitorcloset.cabinet.open()
-
     elif current_room.name == "Auditorium" and command == "CHEST":
         # Open lab.shelf and concat each of the contents to the end of room_items
         current_room.room_items += aud.chest.open()
