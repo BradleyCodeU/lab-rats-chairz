@@ -27,7 +27,7 @@ Gym.create_room_item("first aid")
 
 # Classroom
 #
-classroom = Room("Classroom","A dark room with rows of desks and posters on the walls. There are items on some of the desks and a box in the corner of the room. You can READ a poster. You can Take at the items on the DESKS. There is a red flashlight near the door.")
+classroom = Room("Classroom","A dark room with rows of desks and posters on the walls. There are items on some of the desks and a BOX in the corner of the room. You can READ a poster. You can Take at the items on the DESKS. There is a red flashlight near the door.")
 classroom.desks = Container("desks",["scissors","notebook paper"])
 classroom.box = Container("box",["sheet of bubble wrap","notebooks","markers"])
 classroom.create_room_item("Scissors")
@@ -142,9 +142,9 @@ def checkUserInput(current_room,command,heldItems):
         current_room.room_items += Gym.box2.open()
     elif current_room.name == "Gym" and command == "SHINY BOX":
         print("You check the cabinet, but it's too dark to see if there is anything inside.")
-
+    elif current_room.name == "Classroom" and command == "box":
         # Open classroom.desk and concat each of the contents to the end of room_items
-        current_room.room_items += classroom.package.open()
+        current_room.room_items += classroom.box.open()
     elif current_room.name == "Classroom" and command == "READ":
         print("It is about a field trip from 10 years ago.")
     elif current_room.name == "Classroom" and command == "DESKS" and "Scissors" in heldItems:
