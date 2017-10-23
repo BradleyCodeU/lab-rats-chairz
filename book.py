@@ -1,20 +1,22 @@
 class Book():
     # Constructor
-    def __init__(self,name,page,back,color):
+    def __init__(self,name,material,color):
         self.name = "Diary of a Wimpy Kid"
-        self.page = "224"
-        self.back = "Paperback"
+        self.material = "Paperback"
         self.color = "Red"
             
-    # Accesor
+    # Accessor
     def getBack(self):
-        return self.back
+        return self.material
     def getColor(self):
         return self.color
 
     #Mutator
-    
+    def changeName(self, newColor):
+        self.color = newColor
 
+    def changeBack(self, newMaterial):
+        self.material = newMaterial
         
 
     
